@@ -1,0 +1,39 @@
+# EarthWorm market desk: fetch property-news feeds on GitHub's runners (free,
+# unlimited minutes on a public repository) and publish ONE JSON file on an
+# orphan `data` branch that is force-pushed each run, so the repository's
+# history never grows. The estate (CT185) pulls that file four times a day:
+#   https://raw.githubusercontent.com/<owner>/earthworm-desk-fetchers/data/data/news-latest.json
+name: fetch-news
+on:
+  schedule:
+    - cron: "15 */6 * * *"        # 00:15 06:15 12:15 18:15 UTC
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: fetch-news
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch feeds (stdlib only, 1 request/s per host, honest UA)
+        run: python fetch_news.py --config feeds.json --out out/news-latest.json --days 7
+      - name: Publish to the data branch
+        run: |
+          set -e
+          git config user.name "earthworm-desk-bot"
+          git config user.email "czinnerc@gmail.com"
+          cp out/news-latest.json /tmp/news-latest.json
+          git checkout --orphan data
+          git rm -rfq . || true
+          mkdir -p data
+          cp /tmp/news-latest.json data/news-latest.json
+          git add data/news-latest.json
+          git commit -qm "news-latest $(date -u +%FT%TZ)"
+          git push -f origin data

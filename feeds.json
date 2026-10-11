@@ -1,0 +1,157 @@
+{
+ "_comment": "Feeds verified reachable from the estate on 11/10/2026. Keys are stable identifiers; topic keys match backend/news_ingest.py TOPICS on the estate. 'filter': true means headlines without property-market vocabulary are marked hidden; 'official': true marks regulators and departments.",
+ "feeds": [
+  {
+   "key": "rba-media",
+   "url": "https://www.rba.gov.au/rss/rss-cb-media-releases.xml",
+   "publisher": "Reserve Bank of Australia",
+   "topic": "rba",
+   "official": true,
+   "filter": true,
+   "days": 45
+  },
+  {
+   "key": "rba-speeches",
+   "url": "https://www.rba.gov.au/rss/rss-cb-speeches.xml",
+   "publisher": "Reserve Bank of Australia",
+   "topic": "rba",
+   "official": true,
+   "filter": true,
+   "days": 45
+  },
+  {
+   "key": "apra",
+   "url": "https://www.apra.gov.au/rss.xml",
+   "publisher": "APRA",
+   "topic": "apra",
+   "official": true,
+   "filter": true,
+   "days": 45
+  },
+  {
+   "key": "nsw-planning",
+   "url": "https://www.planning.nsw.gov.au/rss.xml",
+   "publisher": "NSW Department of Planning, Housing and Infrastructure",
+   "topic": "nsw-planning",
+   "official": true,
+   "days": 45
+  },
+  {
+   "key": "smh-property",
+   "url": "https://www.smh.com.au/rss/property.xml",
+   "publisher": "The Sydney Morning Herald",
+   "topic": null,
+   "filter": false
+  },
+  {
+   "key": "rea-news",
+   "url": "https://www.realestate.com.au/news/feed/",
+   "publisher": "realestate.com.au",
+   "topic": null,
+   "filter": true
+  },
+  {
+   "key": "realcommercial",
+   "url": "https://www.realcommercial.com.au/news/feed/",
+   "publisher": "realcommercial.com.au",
+   "topic": null,
+   "filter": true
+  },
+  {
+   "key": "propertyupdate",
+   "url": "https://propertyupdate.com.au/feed/",
+   "publisher": "Property Update",
+   "topic": null,
+   "filter": true
+  },
+  {
+   "key": "macrobusiness",
+   "url": "https://www.macrobusiness.com.au/feed/",
+   "publisher": "MacroBusiness",
+   "topic": null,
+   "filter": true,
+   "drop_irrelevant": true
+  }
+ ],
+ "google_news": {
+  "base": "https://news.google.com/rss/search?q={q}&hl=en-AU&gl=AU&ceid=AU:en",
+  "queries": {
+   "sydney-market": [
+    "Sydney property market prices",
+    "sydney-market"
+   ],
+   "nsw-market": [
+    "NSW housing market",
+    "sydney-market"
+   ],
+   "regional-nsw": [
+    "regional NSW property market",
+    "regional-nsw"
+   ],
+   "auctions": [
+    "Sydney auction clearance rate",
+    "auctions"
+   ],
+   "rents": [
+    "Sydney rents vacancy rate",
+    "rents"
+   ],
+   "rba": [
+    "RBA cash rate decision",
+    "rba"
+   ],
+   "apra": [
+    "APRA mortgage lending rules serviceability buffer",
+    "apra"
+   ],
+   "nsw-planning": [
+    "NSW planning reforms housing targets",
+    "nsw-planning"
+   ],
+   "federal-policy": [
+    "federal government housing policy Australia",
+    "federal-policy"
+   ],
+   "first-home": [
+    "first home buyer scheme Australia",
+    "first-home"
+   ],
+   "strata": [
+    "NSW strata building defects",
+    "strata"
+   ],
+   "property-law": [
+    "NSW conveyancing property law changes",
+    "property-law"
+   ],
+   "revenue-nsw": [
+    "Revenue NSW transfer duty land tax",
+    "revenue-nsw"
+   ],
+   "land-values": [
+    "NSW Valuer General land values",
+    "land-values"
+   ],
+   "firb": [
+    "FIRB foreign investment residential property Australia",
+    "firb"
+   ],
+   "build-to-rent": [
+    "build-to-rent Australia",
+    "build-to-rent"
+   ],
+   "infrastructure": [
+    "Sydney Metro motorway property prices",
+    "infrastructure"
+   ],
+   "hazards": [
+    "NSW flood bushfire planning development",
+    "hazards"
+   ],
+   "supply": [
+    "ABS building approvals housing supply Australia",
+    "supply"
+   ]
+  }
+ }
+}
